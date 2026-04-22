@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+<<<<<<< HEAD
 import sqlite3
 
 app = Flask(__name__)
@@ -88,3 +89,26 @@ def eliminar(id):
 
 if __name__ == "__main__":
     app.run(debug=True)
+=======
+
+app = Flask(__name__)
+
+@app.route('/')
+def inicio():
+    return render_template('index.html')
+
+@app.route('/registro', methods=['GET', 'POST'])
+def registro():
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        correo = request.form['correo']
+
+        print(f"Nuevo registro: {nombre} - {correo}")
+
+        return render_template('registro.html', mensaje="Registro exitoso")
+
+    return render_template('registro.html')
+
+if __name__ == '__main__':
+    app.run()
+>>>>>>> 428f793b74236158d49efdb85888cd6381e60464
