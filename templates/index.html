@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+<div class="text-center mb-4">
+    <img src="{{ url_for('static', filename='img/logo.png') }}" 
+         width="100" class="me-2 rounded-circle">
+</div>
+
+<h2>Lista de Productos</h2>
+
+<a href="/agregar" class="btn btn-primary mb-3">Agregar Producto</a>
+
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Categoría</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Acciones</th>
+    </tr>
+
+    {% for p in productos %}
+    <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.nombre }}</td>
+        <td>{{ p.categoria }}</td>
+        <td>{{ p.precio }}</td>
+        <td>{{ p.stock }}</td>
+        <td>
+            <a href="/editar/{{ p.id }}" class="btn btn-warning btn-sm">Editar</a>
+            <a href="/eliminar/{{ p.id }}" class="btn btn-danger btn-sm">Eliminar</a>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}
